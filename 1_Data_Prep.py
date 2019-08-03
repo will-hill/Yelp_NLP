@@ -1,4 +1,3 @@
-# !pip install pandas
 data_list = list()
 columns = ['review_id', 'user_id', 'business_id', 'stars', 'useful', 'funny', 'cool', 'text', 'date']
 
