@@ -1,3 +1,9 @@
 yelp_dataset.tar
-yelp_dataset
 .ipynb_checkpoints/
+.idea/
+user.json
+review.json
+checkin.json
+photo.json
+tip.json
+business.json
