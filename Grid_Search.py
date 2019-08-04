@@ -13,9 +13,7 @@ del pd, SHUFFLED_REVIEW_FILE_CSV, start, csv_load_time
 
 
 def get_data(size, metric):
-    metric_dict = {0: 'stars', 1: 'funny', 2: 'useful', 3: 'cool'}
-    metric_val = metric_dict[round(metric, 0)]
-    return df_all[[metric_val, 'text']].head(size)
+    return df_all[[metric, 'text']].head(size)
 
 
 def data_prep(df, metric):
@@ -152,13 +150,16 @@ def run_experiment(DATA_SIZE, METRIC, EMBED_OUTPUT_DIM, LSTM_LAYER_COUNT, LSTM_O
     #   loss
     #   1.00-accuracy
     #   secs_to_run / 600 seconds
-    bayes_metric = np.mean(np.array([1 - loss, 1 - mae, acc * 100, 600 - fit_time]))
+    loss_metric = 1 - loss
+    mae_metric = 1 - mae
+    time_metric = 600 - fit_time
+    acc_metric = acc * 3  # triple weighting accuracy
+    bayes_metric = np.mean(np.array([loss_metric, mae_metric, acc_metric, time_metric]))
     results_dict['bayes_metric'] = bayes_metric
 
     results_df = pd.DataFrame.from_dict([results_dict], orient='columns')
     with open('results.csv', 'a') as f:
         results_df.to_csv(f, header=False)
-
 
     return bayes_metric
 
