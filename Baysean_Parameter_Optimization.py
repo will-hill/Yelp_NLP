@@ -280,7 +280,7 @@ def baysean_param_search():
 
     pbounds = {
         'DATA_SIZE': (10000.0, 10000.1),
-        'METRIC': (0, 3),
+        'METRIC': (1, 3),
         'EMBED_OUTPUT_DIM': (8, 512),
         'USE_SPATIAL_DROPOUT': (0, 1),
         'SPATIAL_DROPOUT': (0.0, 0.1),
