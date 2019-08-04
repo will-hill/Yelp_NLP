@@ -117,6 +117,7 @@ def run_experiment(DATA_SIZE, METRIC, EMBED_OUTPUT_DIM, LSTM_LAYER_COUNT, LSTM_O
 def param_grid():
     import uuid
     import pandas as pd
+    from datetime import datetime
 
     DATA_SIZES = [10, 100]
     METRICS = ['stars', 'funny', 'useful', 'cool']
@@ -185,10 +186,13 @@ def param_grid():
                                                     model_uuid = uuid.uuid4().hex
                                                     results_dict['model_uuid'] = model_uuid
 
-                                                    model.save(model_uuid + '.h5')
+                                                    results_dict['timestamp'] = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
 
-                                                    results_df = pd.DataFrame.from_dict(results_dict, orient='index')
-                                                    results_df.to_csv(model_uuid + '.csv')
+                                                    model.save('./models/' + model_uuid + '.h5')
+
+                                                    results_df = pd.DataFrame.from_dict([results_dict], orient='columns')
+                                                    with open('results.csv', 'a') as f:
+                                                        results_df.to_csv(f, header=False)
 
 
 param_grid()
