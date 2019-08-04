@@ -159,56 +159,51 @@ def run_experiment(DATA_SIZE, METRIC, EMBED_OUTPUT_DIM, LSTM_LAYER_COUNT, LSTM_O
     with open('results.csv', 'a') as f:
         results_df.to_csv(f, header=False)
 
-
     return bayes_metric
 
 
-def grid_search():
-    DATA_SIZES = [10, 100, 1000, 10000]
-    METRICS = ['stars', 'funny', 'useful', 'cool']
+def baysean_param_search():
+    from bayes_opt import BayesianOptimization
+    from functools import partial
 
-    # NN
-    EMBED_OUTPUT_DIMS = [8, 16]  # 128
-    USE_SPATIAL_DROPOUTS = [False, True]
-    SPATIAL_DROPOUTS = [0.0, 0.1]
-    LSTM_LAYER_COUNTS = [1, 2]
-    LSTM_OUTS = [8, 16]  # 196
-    LSTM_DROPOUTS = [0.0, 0.1]
-    RECURRENT_DROPOUTS = [0.0, 0.1]
+    # Bounded region of parameter space
+    # pbounds = {'dropout2_rate': (0.1, 0.5), 'lr': (1e-4, 1e-2)}
+    Qpbounds = {
+        'DATA_SIZES': (10000.),
+        # 'METRICS': ('stars', 'funny', 'useful', 'cool'),
+        # encoded
+        'METRICS': (0., 3.),
+        # NN
+        'EMBED_OUTPUT_DIMS': (8., 256.),
+        'USE_SPATIAL_DROPOUTS': (0., 1.),
+        'SPATIAL_DROPOUTS': (0.0, 0.1),
+        'LSTM_LAYER_COUNTS': (0., 2.),
+        'LSTM_OUTS': (4., 256.),
+        'LSTM_DROPOUTS': (0.0, 0.33),
+        'RECURRENT_DROPOUTS': (0.0, 0.33),
 
-    # INDUCTION
-    EPOCHS = [1, 2]
-    BATCH_SIZES = [64, 128]
-    LEARNING_RATES = [0.1, 0.001]
+        # INDUCTION
+        'EPOCHS': (1., 20.),
+        'BATCH_SIZES': (4., 256.),
+        'LEARNING_RATES': (0.0001, 0.5)
+    }
+    pbounds = {'METRICS': (0., 3.), 'EMBED_OUTPUT_DIMS': (8., 256.)}
+    import numpy as np
+    _bounds = np.array([item[1] for item in sorted(pbounds.items(), key=lambda x: x[0])], dtype=np.float)
 
-    ####################
-    ### BIG ASS LOOP ###
-    ####################
+    optimizer = BayesianOptimization(
+        f=run_experiment,
+        pbounds=pbounds,
+        verbose=2,  # verbose = 1 prints only when a maximum is observed, verbose = 0 is silent
+        random_state=1,
+    )
 
-    for EMBED_OUTPUT_DIM in EMBED_OUTPUT_DIMS:
-        for USE_SPATIAL_DROPOUT in USE_SPATIAL_DROPOUTS:
-            for SPATIAL_DROPOUT in SPATIAL_DROPOUTS:
-                for LSTM_LAYER_COUNT in LSTM_LAYER_COUNTS:
-                    for LSTM_OUT in LSTM_OUTS:
-                        for LSTM_DROPOUT in LSTM_DROPOUTS:
-                            for RECURRENT_DROPOUT in RECURRENT_DROPOUTS:
-                                for BATCH_SIZE in BATCH_SIZES:
-                                    for LEARNING_RATE in LEARNING_RATES:
-                                        for EPOCH in EPOCHS:
-                                            for DATA_SIZE in DATA_SIZES:
-                                                for METRIC in METRICS:
-                                                    run_experiment(DATA_SIZE,
-                                                                   METRIC,
-                                                                   EMBED_OUTPUT_DIM,
-                                                                   LSTM_LAYER_COUNT,
-                                                                   LSTM_OUT,
-                                                                   LSTM_DROPOUT,
-                                                                   RECURRENT_DROPOUT,
-                                                                   USE_SPATIAL_DROPOUT,
-                                                                   SPATIAL_DROPOUT,
-                                                                   EPOCH,
-                                                                   BATCH_SIZE,
-                                                                   LEARNING_RATE)
+    optimizer.maximize(init_points=10, n_iter=1000, )
+
+    for i, res in enumerate(optimizer.res):
+        print("Iteration {}: \n\t{}".format(i, res))
+
+    print(optimizer.max)
 
 
-grid_search()
+baysean_param_search()
