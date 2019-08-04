@@ -112,6 +112,44 @@ def evaluate_model(model, history, X_test, Y_test, BATCH_SIZE):
     return loss, mae, acc
 
 
+def is_experiment_redundant(DATA_SIZE,
+                            METRIC,
+                            EMBED_OUTPUT_DIM,
+                            RNN_TYPE,
+                            RNN_LAYER_COUNT,
+                            RNN_OUT,
+                            RNN_DROPOUT,
+                            RECURRENT_DROPOUT,
+                            USE_SPATIAL_DROPOUT,
+                            SPATIAL_DROPOUT,
+                            EPOCH,
+                            BATCH_SIZE,
+                            LEARNING_RATE):
+    import pandas as pd
+    import numpy as np
+    df = pd.read_csv('results.csv')
+    q = df[
+        (df.DATA_SIZE == DATA_SIZE) &
+        (df.METRIC == METRIC) &
+        (df.EMBED_OUTPUT_DIM == EMBED_OUTPUT_DIM) &
+        (df.RNN_TYPE == RNN_TYPE) &
+        (df.RNN_LAYER_COUNT == RNN_LAYER_COUNT) &
+        (df.RNN_OUT == RNN_OUT) &
+        (df.RNN_DROPOUT == RNN_DROPOUT) &
+        (df.RECURRENT_DROPOUT == RECURRENT_DROPOUT) &
+        (df.USE_SPATIAL_DROPOUT == USE_SPATIAL_DROPOUT) &
+        (df.SPATIAL_DROPOUT == SPATIAL_DROPOUT) &
+        (df.EPOCH == EPOCH) &
+        (df.BATCH_SIZE == BATCH_SIZE) &
+        (df.LEARNING_RATE == LEARNING_RATE)]
+
+    if q.shape[0] > 0:
+        result = np.mean(q.bayes_metric)
+        return result
+    else:
+        return -999
+
+
 def run_experiment(DATA_SIZE,
                    METRIC,
                    EMBED_OUTPUT_DIM,
@@ -130,16 +168,39 @@ def run_experiment(DATA_SIZE,
     from datetime import datetime
     import time
     import numpy as np
+    import json
 
     DATA_SIZE = int(round(DATA_SIZE))
     metric_dict = {0: 'stars', 1: 'funny', 2: 'useful', 3: 'cool'}
     METRIC = metric_dict[round(METRIC, 0)]
     EMBED_OUTPUT_DIM = int(round(EMBED_OUTPUT_DIM))
-    LSTM_LAYER_COUNT = int(round(RNN_LAYER_COUNT))
-    LSTM_OUT = int(round(RNN_OUT))
+    RNN_LAYER_COUNT = int(round(RNN_LAYER_COUNT))
+    RNN_OUT = int(round(RNN_OUT))
     USE_SPATIAL_DROPOUT = bool(int(round(USE_SPATIAL_DROPOUT)))
     EPOCH = int(round(EPOCH))
     BATCH_SIZE = int(round(BATCH_SIZE))
+
+    RNN_DROPOUT = round(RNN_DROPOUT, 2)
+    RECURRENT_DROPOUT = round(RECURRENT_DROPOUT, 2)
+    SPATIAL_DROPOUT = round(SPATIAL_DROPOUT, 2)
+    LEARNING_RATE = round(LEARNING_RATE, 2)
+
+    test_redundancy = is_experiment_redundant(DATA_SIZE,
+                                              METRIC,
+                                              EMBED_OUTPUT_DIM,
+                                              RNN_TYPE,
+                                              RNN_LAYER_COUNT,
+                                              RNN_OUT,
+                                              RNN_DROPOUT,
+                                              RECURRENT_DROPOUT,
+                                              USE_SPATIAL_DROPOUT,
+                                              SPATIAL_DROPOUT,
+                                              EPOCH,
+                                              BATCH_SIZE,
+                                              LEARNING_RATE)
+
+    if test_redundancy != -999:
+        return test_redundancy
 
     df = get_data(DATA_SIZE, METRIC)
     X, Y, VOCAB_SIZE, X_train, X_test, Y_train, Y_test = data_prep(df, METRIC)
@@ -195,6 +256,8 @@ def run_experiment(DATA_SIZE,
     results_dict['timestamp'] = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
 
     model.save('./models/' + model_uuid + '.h5')
+    with open('./models/' + model_uuid + '.history.json', 'w') as f:
+        json.dump(history.history, f)
 
     # metric for Baysean Optimization
     # thing to minimize:
@@ -222,9 +285,9 @@ def baysean_param_search():
         'USE_SPATIAL_DROPOUT': (0, 1),
         'SPATIAL_DROPOUT': (0.0, 0.1),
         'RNN_TYPE': (0, 1),  # GRU / LSTM
-        'LSTM_LAYER_COUNT': (0, 2),
-        'LSTM_OUT': (4, 256),
-        'LSTM_DROPOUT': (0.0, 0.33),
+        'RNN_LAYER_COUNT': (0, 2),
+        'RNN_OUT': (4, 256),
+        'RNN_DROPOUT': (0.0, 0.33),
         'RECURRENT_DROPOUT': (0.0, 0.33),
         'EPOCH': (3, 6),
         'BATCH_SIZE': (4, 256),
