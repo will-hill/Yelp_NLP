@@ -168,8 +168,9 @@ def baysean_param_search():
 
     # Bounded region of parameter space
     # pbounds = {'dropout2_rate': (0.1, 0.5), 'lr': (1e-4, 1e-2)}
-    Qpbounds = {
-        'DATA_SIZES': (10000.),
+    pbounds = {
+        'DATA_SIZES': (10000.)}
+    asdf = {
         # 'METRICS': ('stars', 'funny', 'useful', 'cool'),
         # encoded
         'METRICS': (0., 3.),
@@ -187,8 +188,9 @@ def baysean_param_search():
         'BATCH_SIZES': (4., 256.),
         'LEARNING_RATES': (0.0001, 0.5)
     }
-    pbounds = {'METRICS': (0., 3.), 'EMBED_OUTPUT_DIMS': (8., 256.)}
+
     import numpy as np
+
     _bounds = np.array([item[1] for item in sorted(pbounds.items(), key=lambda x: x[0])], dtype=np.float)
 
     optimizer = BayesianOptimization(
