@@ -13,9 +13,7 @@ del pd, SHUFFLED_REVIEW_FILE_CSV, start, csv_load_time
 
 
 def get_data(size, metric):
-    metric_dict = {0: 'stars', 1: 'funny', 2: 'useful', 3: 'cool'}
-    metric_val = metric_dict[round(metric, 0)]
-    return df_all[[metric_val, 'text']].head(size)
+    return df_all[[metric, 'text']].head(size)
 
 
 def data_prep(df, metric):
@@ -36,11 +34,19 @@ def data_prep(df, metric):
     return X, Y, VOCAB_SIZE, X_train, X_test, Y_train, Y_test
 
 
-def model_factory(X_train, VOCAB_SIZE, EMBED_OUTPUT_DIM, LSTM_LAYER_COUNT, LSTM_OUT, LSTM_DROPOUT, RECURRENT_DROPOUT, USE_SPATIAL_DROPOUT, SPATIAL_DROPOUT,
+def model_factory(X_train,
+                  VOCAB_SIZE,
+                  EMBED_OUTPUT_DIM,
+                  RNN_TYPE,
+                  RNN_LAYER_COUNT,
+                  RNN_OUT,
+                  RNN_DROPOUT,
+                  USE_SPATIAL_DROPOUT,
+                  SPATIAL_DROPOUT,
                   LEARNING_RATE):
     import keras
     from keras.models import Sequential
-    from keras.layers import Dense, Embedding, LSTM, SpatialDropout1D
+    from keras.layers import Dense, Embedding, LSTM, GRU, SpatialDropout1D
 
     model = Sequential()
 
@@ -56,11 +62,18 @@ def model_factory(X_train, VOCAB_SIZE, EMBED_OUTPUT_DIM, LSTM_LAYER_COUNT, LSTM_
     if USE_SPATIAL_DROPOUT:
         model.add(SpatialDropout1D(SPATIAL_DROPOUT))
 
-    if LSTM_LAYER_COUNT > 1:
-        for i in range(LSTM_LAYER_COUNT):
-            model.add(LSTM(LSTM_OUT, return_sequences=True, dropout=LSTM_DROPOUT, recurrent_dropout=RECURRENT_DROPOUT))
+    RNN_TYPE = int(round(RNN_TYPE))  # RNN_TYPE_DICT = {0:'gru',1:'lstm'}
+    if (RNN_TYPE == 0):
+        model.add(GRU(RNN_OUT, dropout=RNN_DROPOUT, recurrent_dropout=RNN_DROPOUT))
+        if RNN_LAYER_COUNT > 1:
+            for i in range(RNN_LAYER_COUNT):
+                model.add(GRU(RNN_OUT, return_sequences=True, dropout=RNN_DROPOUT, recurrent_dropout=RNN_DROPOUT))
+    else:
+        if RNN_LAYER_COUNT > 1:
+            for i in range(RNN_LAYER_COUNT):
+                model.add(LSTM(RNN_OUT, return_sequences=True, dropout=RNN_DROPOUT, recurrent_dropout=RNN_DROPOUT))
 
-    model.add(LSTM(LSTM_OUT, dropout=LSTM_DROPOUT, recurrent_dropout=RECURRENT_DROPOUT))
+        model.add(LSTM(RNN_OUT, dropout=RNN_DROPOUT, recurrent_dropout=RNN_DROPOUT))
 
     model.add(Dense(1, activation='linear'))
     adam = keras.optimizers.Adam(lr=LEARNING_RATE, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
@@ -99,19 +112,49 @@ def evaluate_model(model, history, X_test, Y_test, BATCH_SIZE):
     return loss, mae, acc
 
 
-def run_experiment(DATA_SIZE, METRIC, EMBED_OUTPUT_DIM, LSTM_LAYER_COUNT, LSTM_OUT, LSTM_DROPOUT, RECURRENT_DROPOUT, USE_SPATIAL_DROPOUT, SPATIAL_DROPOUT,
-                   EPOCH, BATCH_SIZE, LEARNING_RATE):
+def run_experiment(DATA_SIZE,
+                   METRIC,
+                   EMBED_OUTPUT_DIM,
+                   RNN_TYPE,
+                   RNN_LAYER_COUNT,
+                   RNN_OUT,
+                   RNN_DROPOUT,
+                   RECURRENT_DROPOUT,
+                   USE_SPATIAL_DROPOUT,
+                   SPATIAL_DROPOUT,
+                   EPOCH,
+                   BATCH_SIZE,
+                   LEARNING_RATE):
     import uuid
     import pandas as pd
     from datetime import datetime
     import time
     import numpy as np
 
+    DATA_SIZE = int(round(DATA_SIZE))
+    metric_dict = {0: 'stars', 1: 'funny', 2: 'useful', 3: 'cool'}
+    METRIC = metric_dict[round(METRIC, 0)]
+    EMBED_OUTPUT_DIM = int(round(EMBED_OUTPUT_DIM))
+    LSTM_LAYER_COUNT = int(round(RNN_LAYER_COUNT))
+    LSTM_OUT = int(round(RNN_OUT))
+    USE_SPATIAL_DROPOUT = bool(int(round(USE_SPATIAL_DROPOUT)))
+    EPOCH = int(round(EPOCH))
+    BATCH_SIZE = int(round(BATCH_SIZE))
+
     df = get_data(DATA_SIZE, METRIC)
     X, Y, VOCAB_SIZE, X_train, X_test, Y_train, Y_test = data_prep(df, METRIC)
 
-    model = model_factory(X_train, VOCAB_SIZE, EMBED_OUTPUT_DIM, LSTM_LAYER_COUNT, LSTM_OUT, LSTM_DROPOUT, RECURRENT_DROPOUT, USE_SPATIAL_DROPOUT,
-                          SPATIAL_DROPOUT, LEARNING_RATE)
+    model = model_factory(X_train,
+                          VOCAB_SIZE,
+                          EMBED_OUTPUT_DIM,
+                          RNN_TYPE,
+                          RNN_LAYER_COUNT,
+                          RNN_OUT,
+                          RNN_DROPOUT,
+                          USE_SPATIAL_DROPOUT,
+                          SPATIAL_DROPOUT,
+                          LEARNING_RATE)
+
     print(model.summary())
 
     start_time = time.time()
@@ -124,9 +167,16 @@ def run_experiment(DATA_SIZE, METRIC, EMBED_OUTPUT_DIM, LSTM_LAYER_COUNT, LSTM_O
     results_dict['EMBED_OUTPUT_DIM'] = EMBED_OUTPUT_DIM
     results_dict['USE_SPATIAL_DROPOUT'] = USE_SPATIAL_DROPOUT
     results_dict['SPATIAL_DROPOUT'] = SPATIAL_DROPOUT
-    results_dict['LSTM_LAYER_COUNT'] = LSTM_LAYER_COUNT
-    results_dict['LSTM_OUT'] = LSTM_OUT
-    results_dict['LSTM_DROPOUT'] = LSTM_DROPOUT
+
+    # RNN_TYPE_DICT = {0:'gru',1:'lstm'}
+    if (int(round(RNN_TYPE)) == 0):
+        results_dict['RNN_TYPE'] = 'GRU'
+    else:
+        results_dict['RNN_TYPE'] = 'LSTM'
+
+    results_dict['RNN_LAYER_COUNT'] = RNN_LAYER_COUNT
+    results_dict['RNN_OUT'] = RNN_OUT
+    results_dict['RNN_DROPOUT'] = RNN_DROPOUT
     results_dict['RECURRENT_DROPOUT'] = RECURRENT_DROPOUT
     results_dict['BATCH_SIZE'] = BATCH_SIZE
     results_dict['LEARNING_RATE'] = LEARNING_RATE
@@ -164,33 +214,24 @@ def run_experiment(DATA_SIZE, METRIC, EMBED_OUTPUT_DIM, LSTM_LAYER_COUNT, LSTM_O
 
 def baysean_param_search():
     from bayes_opt import BayesianOptimization
-    from functools import partial
 
-    # Bounded region of parameter space
-    # pbounds = {'dropout2_rate': (0.1, 0.5), 'lr': (1e-4, 1e-2)}
     pbounds = {
-        'DATA_SIZES': (10000.)}
-    asdf = {
-        # 'METRICS': ('stars', 'funny', 'useful', 'cool'),
-        # encoded
-        'METRICS': (0., 3.),
-        # NN
-        'EMBED_OUTPUT_DIMS': (8., 256.),
-        'USE_SPATIAL_DROPOUTS': (0., 1.),
-        'SPATIAL_DROPOUTS': (0.0, 0.1),
-        'LSTM_LAYER_COUNTS': (0., 2.),
-        'LSTM_OUTS': (4., 256.),
-        'LSTM_DROPOUTS': (0.0, 0.33),
-        'RECURRENT_DROPOUTS': (0.0, 0.33),
-
-        # INDUCTION
-        'EPOCHS': (1., 20.),
-        'BATCH_SIZES': (4., 256.),
-        'LEARNING_RATES': (0.0001, 0.5)
+        'DATA_SIZE': (10000.0, 10000.1),
+        'METRIC': (0, 3),
+        'EMBED_OUTPUT_DIM': (8, 512),
+        'USE_SPATIAL_DROPOUT': (0, 1),
+        'SPATIAL_DROPOUT': (0.0, 0.1),
+        'RNN_TYPE': (0, 1),  # GRU / LSTM
+        'LSTM_LAYER_COUNT': (0, 2),
+        'LSTM_OUT': (4, 256),
+        'LSTM_DROPOUT': (0.0, 0.33),
+        'RECURRENT_DROPOUT': (0.0, 0.33),
+        'EPOCH': (3, 6),
+        'BATCH_SIZE': (4, 256),
+        'LEARNING_RATE': (0.0001, 0.5)
     }
 
     import numpy as np
-
     _bounds = np.array([item[1] for item in sorted(pbounds.items(), key=lambda x: x[0])], dtype=np.float)
 
     optimizer = BayesianOptimization(
