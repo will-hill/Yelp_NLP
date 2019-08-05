@@ -34,18 +34,14 @@ def data_prep(df, metric):
     return X, Y, VOCAB_SIZE, X_train, X_test, Y_train, Y_test
 
 
-def model_factory(X_train, VOCAB_SIZE, EMBED_OUTPUT_DIM, LSTM_LAYER_COUNT, LSTM_OUT, LSTM_DROPOUT, RECURRENT_DROPOUT, USE_SPATIAL_DROPOUT, SPATIAL_DROPOUT,
-                  LEARNING_RATE):
+def model_factory(X_train, VOCAB_SIZE, EMBED_OUTPUT_DIM, LSTM_LAYER_COUNT, LSTM_OUT, LSTM_DROPOUT, 
+                  RECURRENT_DROPOUT, USE_SPATIAL_DROPOUT, SPATIAL_DROPOUT, LEARNING_RATE):
     import keras
     from keras.models import Sequential
     from keras.layers import Dense, Embedding, LSTM, SpatialDropout1D
 
     model = Sequential()
 
-    # TODO https://realpython.com/python-keras-text-classification/
-
-    # https://keras.io/layers/embeddings/
-    # keras.layers.Embedding(input_dim, output_dim, embeddings_initializer='uniform', embeddings_regularizer=None, activity_regularizer=None, embeddings_constraint=None, mask_zero=False, input_length=None)
     model.add(Embedding(VOCAB_SIZE,
                         EMBED_OUTPUT_DIM,
                         mask_zero=True,
@@ -56,7 +52,8 @@ def model_factory(X_train, VOCAB_SIZE, EMBED_OUTPUT_DIM, LSTM_LAYER_COUNT, LSTM_
 
     if LSTM_LAYER_COUNT > 1:
         for i in range(LSTM_LAYER_COUNT):
-            model.add(LSTM(LSTM_OUT, return_sequences=True, dropout=LSTM_DROPOUT, recurrent_dropout=RECURRENT_DROPOUT))
+            model.add(LSTM(LSTM_OUT, return_sequences=True, dropout=LSTM_DROPOUT, 
+                           recurrent_dropout=RECURRENT_DROPOUT))
 
     model.add(LSTM(LSTM_OUT, dropout=LSTM_DROPOUT, recurrent_dropout=RECURRENT_DROPOUT))
 
