@@ -1,8 +1,8 @@
 import time
 
 # REVIEW_FILE_CSV = 'reviews.csv'
+# SHUFFLED_REVIEW_FILE_CSV = 'shuffled.100000.reviews.csv'  # 'shuffled.reviews.csv'
 SHUFFLED_REVIEW_FILE_CSV = 'shuffled.100000.reviews.csv'  # 'shuffled.reviews.csv'
-SHUFFLED_REVIEW_FILE_CSV = 'shuffled.1000000.reviews.csv'  # 'shuffled.reviews.csv'
 #SHUFFLED_REVIEW_FILE_CSV = 'shuffled.reviews.csv'  # 'shuffled.reviews.csv'
 import pandas as pd
 
