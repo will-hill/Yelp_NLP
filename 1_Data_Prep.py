@@ -3,6 +3,7 @@ columns = ['review_id', 'user_id', 'business_id', 'stars', 'useful', 'funny', 'c
 
 # inspired by https://thedatafrog.com/text-mining-pandas-yelp/
 with open('review.json') as reviews:
+    
     import json
     for i, line in enumerate(reviews):
 
