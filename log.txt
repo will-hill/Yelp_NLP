@@ -1,0 +1,303 @@
+nohup: ignoring input
+Using TensorFlow backend.
+/home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:516: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:517: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:518: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:519: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:520: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:525: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+/home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:542: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:543: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:544: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:545: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:550: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+WARNING: Logging before flag parsing goes to stderr.
+W0805 03:45:52.470418 139687949530944 deprecation_wrapper.py:119] From /home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:74: The name tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+W0805 03:45:52.488509 139687949530944 deprecation_wrapper.py:119] From /home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:517: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+W0805 03:45:52.490670 139687949530944 deprecation_wrapper.py:119] From /home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:4138: The name tf.random_uniform is deprecated. Please use tf.random.uniform instead.
+
+W0805 03:45:52.716380 139687949530944 deprecation_wrapper.py:119] From /home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:133: The name tf.placeholder_with_default is deprecated. Please use tf.compat.v1.placeholder_with_default instead.
+
+W0805 03:45:52.727917 139687949530944 deprecation.py:506] From /home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:3445: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+W0805 03:45:52.950828 139687949530944 deprecation.py:323] From /home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:2974: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+W0805 03:45:53.004204 139687949530944 deprecation_wrapper.py:119] From /home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/keras/optimizers.py:790: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+W0805 03:45:53.879631 139687949530944 deprecation_wrapper.py:119] From /home/will/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:986: The name tf.assign_add is deprecated. Please use tf.compat.v1.assign_add instead.
+
+2019-08-05 03:45:54.041900: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2019-08-05 03:45:54.068438: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2100000000 Hz
+2019-08-05 03:45:54.071674: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55576fd086f0 executing computations on platform Host. Devices:
+2019-08-05 03:45:54.071744: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): <undefined>, <undefined>
+2019-08-05 03:45:54.073730: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcuda.so.1
+2019-08-05 03:45:54.086092: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 0 with properties: 
+name: Tesla V100-PCIE-16GB major: 7 minor: 0 memoryClockRate(GHz): 1.38
+pciBusID: 0000:af:00.0
+2019-08-05 03:45:54.086254: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Could not dlopen library 'libcudart.so.10.0'; dlerror: libcudart.so.10.0: cannot open shared object file: No such file or directory
+2019-08-05 03:45:54.086348: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Could not dlopen library 'libcublas.so.10.0'; dlerror: libcublas.so.10.0: cannot open shared object file: No such file or directory
+2019-08-05 03:45:54.086434: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Could not dlopen library 'libcufft.so.10.0'; dlerror: libcufft.so.10.0: cannot open shared object file: No such file or directory
+2019-08-05 03:45:54.086521: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Could not dlopen library 'libcurand.so.10.0'; dlerror: libcurand.so.10.0: cannot open shared object file: No such file or directory
+2019-08-05 03:45:54.086607: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Could not dlopen library 'libcusolver.so.10.0'; dlerror: libcusolver.so.10.0: cannot open shared object file: No such file or directory
+2019-08-05 03:45:54.086698: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Could not dlopen library 'libcusparse.so.10.0'; dlerror: libcusparse.so.10.0: cannot open shared object file: No such file or directory
+2019-08-05 03:45:54.094188: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library libcudnn.so.7
+2019-08-05 03:45:54.094221: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1663] Cannot dlopen some GPU libraries. Skipping registering GPU devices...
+2019-08-05 03:45:54.253590: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1181] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-08-05 03:45:54.253637: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1187]      0 
+2019-08-05 03:45:54.253648: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1200] 0:   N 
+2019-08-05 03:45:54.257482: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55577544c3e0 executing computations on platform CUDA. Devices:
+2019-08-05 03:45:54.257527: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Tesla V100-PCIE-16GB, Compute Capability 7.0
+2019-08-05 03:45:54.560997: W tensorflow/compiler/jit/mark_for_compilation_pass.cc:1412] (One-time warning): Not using XLA:CPU for cluster because envvar TF_XLA_FLAGS=--tf_xla_cpu_global_jit was not set.  If you want XLA:CPU, either set that envvar, or use experimental_jit_scope to enable XLA:CPU.  To confirm that XLA is active, pass --vmodule=xla_compilation_cache=1 (as a proper command-line flag, not via TF_XLA_FLAGS) or set the envvar XLA_FLAGS=--xla_hlo_profile.
+]0;IPython: will/Yelp_NLP0.29 seconds loading CSV into memory
+|   iter    |  target   | BATCH_... | DATA_SIZE | EMBED_... |   EPOCH   | LEARNI... |  METRIC   | RECURR... | RNN_DR... | RNN_LA... |  RNN_OUT  | RNN_TYPE  | SPATIA... | USE_SP... |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+embedding_1 (Embedding)      (None, 966, 8)            235584    
+_________________________________________________________________
+gru_1 (GRU)                  (None, 140)               62580     
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 141       
+=================================================================
+Total params: 298,305
+Trainable params: 298,305
+Non-trainable params: 0
+_________________________________________________________________
+None
+Train on 2888 samples, validate on 1443 samples
+Epoch 1/4
+ - 72s - loss: nan - mean_absolute_error: nan - acc: 0.0000e+00 - val_loss: nan - val_mean_absolute_error: nan - val_acc: 0.0000e+00
+Epoch 2/4
+ - 66s - loss: nan - mean_absolute_error: nan - acc: 0.0000e+00 - val_loss: nan - val_mean_absolute_error: nan - val_acc: 0.0000e+00
+Epoch 3/4
+ - 65s - loss: nan - mean_absolute_error: nan - acc: 0.0000e+00 - val_loss: nan - val_mean_absolute_error: nan - val_acc: 0.0000e+00
+Epoch 4/4
+ - 65s - loss: nan - mean_absolute_error: nan - acc: 0.0000e+00 - val_loss: nan - val_mean_absolute_error: nan - val_acc: 0.0000e+00
+loss(mse):nan
+mae:nan
+acc:0.0
+| [0m 1       [0m | [0m nan     [0m | [0m 109.1   [0m | [0m 1.72e+05[0m | [0m 8.058   [0m | [0m 3.907   [0m | [0m 0.07346 [0m | [0m 1.185   [0m | [0m 0.06147 [0m | [0m 0.114   [0m | [0m 0.7935  [0m | [0m 139.8   [0m | [0m 0.4192  [0m | [0m 0.06852 [0m | [0m 0.2045  [0m |
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+embedding_2 (Embedding)      (None, 966, 346)          10189008  
+_________________________________________________________________
+spatial_dropout1d_1 (Spatial (None, 966, 346)          0         
+_________________________________________________________________
+lstm_1 (LSTM)                (None, 966, 83)           142760    
+_________________________________________________________________
+lstm_2 (LSTM)                (None, 966, 83)           55444     
+_________________________________________________________________
+lstm_3 (LSTM)                (None, 83)                55444     
+_________________________________________________________________
+dense_2 (Dense)              (None, 1)                 84        
+=================================================================
+Total params: 10,442,740
+Trainable params: 10,442,740
+Non-trainable params: 0
+_________________________________________________________________
+None
+Train on 2888 samples, validate on 1443 samples
+Epoch 1/4
+ - 131s - loss: 26.1377 - mean_absolute_error: 4.2730 - acc: 0.0000e+00 - val_loss: 19.3020 - val_mean_absolute_error: 4.3934 - val_acc: 0.0000e+00
+Epoch 2/4
+ - 124s - loss: 6.4335 - mean_absolute_error: 2.2777 - acc: 0.0000e+00 - val_loss: 3.6955 - val_mean_absolute_error: 1.9223 - val_acc: 0.0000e+00
+Epoch 3/4
+ - 121s - loss: 1.6393 - mean_absolute_error: 1.1585 - acc: 0.0000e+00 - val_loss: 0.1417 - val_mean_absolute_error: 0.3759 - val_acc: 0.0000e+00
+Epoch 4/4
+ - 123s - loss: 0.4055 - mean_absolute_error: 0.5599 - acc: 0.0000e+00 - val_loss: 0.2252 - val_mean_absolute_error: 0.4742 - val_acc: 0.0000e+00
+loss(mse):0.22425737698416678
+mae:0.4730215227648602
+acc:0.0
+| [0m 2       [0m | [0m 1.342e+0[0m | [0m 225.3   [0m | [0m 1.027e+0[0m | [0m 345.9   [0m | [0m 4.252   [0m | [0m 0.2794  [0m | [0m 1.281   [0m | [0m 0.06537 [0m | [0m 0.2642  [0m | [0m 1.937   [0m | [0m 82.98   [0m | [0m 0.6923  [0m | [0m 0.08764 [0m | [0m 0.8946  [0m |
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+embedding_3 (Embedding)      (None, 979, 94)           3741858   
+_________________________________________________________________
+lstm_4 (LSTM)                (None, 84)                60144     
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 85        
+=================================================================
+Total params: 3,802,087
+Trainable params: 3,802,087
+Non-trainable params: 0
+_________________________________________________________________
+None
+Train on 6488 samples, validate on 3240 samples
+Epoch 1/6
+ - 526s - loss: 0.0045 - mean_absolute_error: 0.0318 - acc: 0.0000e+00 - val_loss: 6.3744e-04 - val_mean_absolute_error: 0.0134 - val_acc: 0.0000e+00
+Epoch 2/6
+ - 521s - loss: 0.0011 - mean_absolute_error: 0.0218 - acc: 0.0000e+00 - val_loss: 9.4771e-04 - val_mean_absolute_error: 0.0188 - val_acc: 0.0000e+00
+Epoch 3/6
+ - 600s - loss: 0.0535 - mean_absolute_error: 0.1205 - acc: 0.0000e+00 - val_loss: 0.1730 - val_mean_absolute_error: 0.3007 - val_acc: 0.0000e+00
+Epoch 4/6
+ - 600s - loss: 0.0478 - mean_absolute_error: 0.1375 - acc: 0.0000e+00 - val_loss: 0.0030 - val_mean_absolute_error: 0.0417 - val_acc: 0.0000e+00
+Epoch 5/6
+ - 597s - loss: 0.0036 - mean_absolute_error: 0.0458 - acc: 0.0000e+00 - val_loss: 0.0036 - val_mean_absolute_error: 0.0453 - val_acc: 0.0000e+00
+Epoch 6/6
+ - 599s - loss: 0.0193 - mean_absolute_error: 0.1028 - acc: 0.0000e+00 - val_loss: 0.0213 - val_mean_absolute_error: 0.1128 - val_acc: 0.0000e+00
+loss(mse):0.020499836990472944
+mae:0.11042566268311468
+acc:0.0
+| [0m 3       [0m | [0m 1.513e+0[0m | [0m 25.43   [0m | [0m 1.039e+0[0m | [0m 93.59   [0m | [0m 5.634   [0m | [0m 0.04926 [0m | [0m 1.842   [0m | [0m 0.3161  [0m | [0m 0.1759  [0m | [0m 1.384   [0m | [0m 83.51   [0m | [0m 0.6865  [0m | [0m 0.08346 [0m | [0m 0.01829 [0m |
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+embedding_4 (Embedding)      (None, 966, 385)          11337480  
+_________________________________________________________________
+spatial_dropout1d_2 (Spatial (None, 966, 385)          0         
+_________________________________________________________________
+gru_2 (GRU)                  (None, 77)                106953    
+_________________________________________________________________
+dense_4 (Dense)              (None, 1)                 78        
+=================================================================
+Total params: 11,444,511
+Trainable params: 11,444,511
+Non-trainable params: 0
+_________________________________________________________________
+None
+Train on 2888 samples, validate on 1443 samples
+Epoch 1/4
+ - 47s - loss: 28.9634 - mean_absolute_error: 3.8330 - acc: 0.0000e+00 - val_loss: 9.2032 - val_mean_absolute_error: 2.4461 - val_acc: 0.0000e+00
+Epoch 2/4
+ - 43s - loss: 5.2340 - mean_absolute_error: 1.8014 - acc: 0.0000e+00 - val_loss: 2.0061 - val_mean_absolute_error: 1.1281 - val_acc: 0.0000e+00
+Epoch 3/4
+ - 43s - loss: 1.1327 - mean_absolute_error: 0.8428 - acc: 0.0000e+00 - val_loss: 0.5328 - val_mean_absolute_error: 0.5860 - val_acc: 0.0000e+00
+Epoch 4/4
+ - 43s - loss: 0.3380 - mean_absolute_error: 0.4574 - acc: 0.0000e+00 - val_loss: 0.1485 - val_mean_absolute_error: 0.3091 - val_acc: 0.0000e+00
+loss(mse):0.14995439530061358
+mae:0.3112111575936422
+acc:0.0
+| [0m 4       [0m | [0m 1.828e+0[0m | [0m 193.0   [0m | [0m 1.989e+0[0m | [0m 385.1   [0m | [0m 3.841   [0m | [0m 0.3947  [0m | [0m 1.206   [0m | [0m 0.1478  [0m | [0m 0.2998  [0m | [0m 0.5872  [0m | [0m 76.52   [0m | [0m 0.13    [0m | [0m 0.001937[0m | [0m 0.6788  [0m |
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+embedding_5 (Embedding)      (None, 966, 256)          7538688   
+_________________________________________________________________
+lstm_5 (LSTM)                (None, 108)               157680    
+_________________________________________________________________
+dense_5 (Dense)              (None, 1)                 109       
+=================================================================
+Total params: 7,696,477
+Trainable params: 7,696,477
+Non-trainable params: 0
+_________________________________________________________________
+None
+Train on 2888 samples, validate on 1443 samples
+Epoch 1/3
+ - 129s - loss: 1.9878 - mean_absolute_error: 0.8775 - acc: 0.0000e+00 - val_loss: 0.2025 - val_mean_absolute_error: 0.3478 - val_acc: 0.0000e+00
+Epoch 2/3
+ - 126s - loss: 0.0739 - mean_absolute_error: 0.2025 - acc: 0.0000e+00 - val_loss: 0.0291 - val_mean_absolute_error: 0.1354 - val_acc: 0.0000e+00
+Epoch 3/3
+ - 126s - loss: 0.0127 - mean_absolute_error: 0.0825 - acc: 0.0000e+00 - val_loss: 0.0054 - val_mean_absolute_error: 0.0571 - val_acc: 0.0000e+00
+loss(mse):0.006023689508224264
+mae:0.05825732707551348
+acc:0.0
+| [0m 5       [0m | [0m 2.409e+0[0m | [0m 57.33   [0m | [0m 1.266e+0[0m | [0m 255.8   [0m | [0m 3.16    [0m | [0m 0.2871  [0m | [0m 1.293   [0m | [0m 0.1945  [0m | [0m 0.2309  [0m | [0m 0.2047  [0m | [0m 108.3   [0m | [0m 0.6944  [0m | [0m 0.04142 [0m | [0m 0.04995 [0m |
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+[0;32m~/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/bayes_opt/target_space.py[0m in [0;36mprobe[0;34m(self, params)[0m
+[1;32m    190[0m         [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 191[0;31m             [0mtarget[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_cache[0m[0;34m[[0m[0m_hashable[0m[0;34m([0m[0mx[0m[0;34m)[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    192[0m         [0;32mexcept[0m [0mKeyError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mKeyError[0m: (139.04589429070893, 166379.46452197887, 267.50411247738754, 5.83378426797244, 0.29331886474694624, 2.8068038305757668, 0.04536665236825838, 0.045961194592750325, 1.6147825774190476, 104.21456292035447, 0.16535419711693278, 0.0927508580396034, 0.34776585974550656)
+
+During handling of the above exception, another exception occurred:
+
+[0;31mValueError[0m                                Traceback (most recent call last)
+[0;32m~/Yelp_NLP/Baysean_Parameter_Optimization.py[0m in [0;36m<module>[0;34m[0m
+[1;32m    327[0m [0;34m[0m[0m
+[1;32m    328[0m [0;34m[0m[0m
+[0;32m--> 329[0;31m [0mbaysean_param_search[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;32m~/Yelp_NLP/Baysean_Parameter_Optimization.py[0m in [0;36mbaysean_param_search[0;34m()[0m
+[1;32m    319[0m     )
+[1;32m    320[0m [0;34m[0m[0m
+[0;32m--> 321[0;31m     [0moptimizer[0m[0;34m.[0m[0mmaximize[0m[0;34m([0m[0minit_points[0m[0;34m=[0m[0;36m10[0m[0;34m,[0m [0mn_iter[0m[0;34m=[0m[0;36m1000[0m[0;34m,[0m [0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    322[0m [0;34m[0m[0m
+[1;32m    323[0m     [0;32mfor[0m [0mi[0m[0;34m,[0m [0mres[0m [0;32min[0m [0menumerate[0m[0;34m([0m[0moptimizer[0m[0;34m.[0m[0mres[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/bayes_opt/bayesian_optimization.py[0m in [0;36mmaximize[0;34m(self, init_points, n_iter, acq, kappa, xi, **gp_params)[0m
+[1;32m    172[0m                 [0miteration[0m [0;34m+=[0m [0;36m1[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    173[0m [0;34m[0m[0m
+[0;32m--> 174[0;31m             [0mself[0m[0;34m.[0m[0mprobe[0m[0;34m([0m[0mx_probe[0m[0;34m,[0m [0mlazy[0m[0;34m=[0m[0;32mFalse[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    175[0m [0;34m[0m[0m
+[1;32m    176[0m         [0mself[0m[0;34m.[0m[0mdispatch[0m[0;34m([0m[0mEvents[0m[0;34m.[0m[0mOPTMIZATION_END[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/bayes_opt/bayesian_optimization.py[0m in [0;36mprobe[0;34m(self, params, lazy)[0m
+[1;32m    110[0m             [0mself[0m[0;34m.[0m[0m_queue[0m[0;34m.[0m[0madd[0m[0;34m([0m[0mparams[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    111[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 112[0;31m             [0mself[0m[0;34m.[0m[0m_space[0m[0;34m.[0m[0mprobe[0m[0;34m([0m[0mparams[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    113[0m             [0mself[0m[0;34m.[0m[0mdispatch[0m[0;34m([0m[0mEvents[0m[0;34m.[0m[0mOPTMIZATION_STEP[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    114[0m [0;34m[0m[0m
+
+[0;32m~/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/bayes_opt/target_space.py[0m in [0;36mprobe[0;34m(self, params)[0m
+[1;32m    192[0m         [0;32mexcept[0m [0mKeyError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    193[0m             [0mparams[0m [0;34m=[0m [0mdict[0m[0;34m([0m[0mzip[0m[0;34m([0m[0mself[0m[0;34m.[0m[0m_keys[0m[0;34m,[0m [0mx[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 194[0;31m             [0mtarget[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mtarget_func[0m[0;34m([0m[0;34m**[0m[0mparams[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    195[0m             [0mself[0m[0;34m.[0m[0mregister[0m[0;34m([0m[0mx[0m[0;34m,[0m [0mtarget[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    196[0m         [0;32mreturn[0m [0mtarget[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/Yelp_NLP/Baysean_Parameter_Optimization.py[0m in [0;36mrun_experiment[0;34m(DATA_SIZE, METRIC, EMBED_OUTPUT_DIM, RNN_TYPE, RNN_LAYER_COUNT, RNN_OUT, RNN_DROPOUT, RECURRENT_DROPOUT, USE_SPATIAL_DROPOUT, SPATIAL_DROPOUT, EPOCH, BATCH_SIZE, LEARNING_RATE)[0m
+[1;32m    227[0m                           [0mUSE_SPATIAL_DROPOUT[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    228[0m                           [0mSPATIAL_DROPOUT[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 229[0;31m                           LEARNING_RATE)
+[0m[1;32m    230[0m [0;34m[0m[0m
+[1;32m    231[0m     [0mprint[0m[0;34m([0m[0mmodel[0m[0;34m.[0m[0msummary[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/Yelp_NLP/Baysean_Parameter_Optimization.py[0m in [0;36mmodel_factory[0;34m(X_train, VOCAB_SIZE, EMBED_OUTPUT_DIM, RNN_TYPE, RNN_LAYER_COUNT, RNN_OUT, RNN_DROPOUT, USE_SPATIAL_DROPOUT, SPATIAL_DROPOUT, LEARNING_RATE)[0m
+[1;32m     70[0m         [0;32mif[0m [0mRNN_LAYER_COUNT[0m [0;34m>[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     71[0m             [0;32mfor[0m [0mi[0m [0;32min[0m [0mrange[0m[0;34m([0m[0mRNN_LAYER_COUNT[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 72[0;31m                 [0mmodel[0m[0;34m.[0m[0madd[0m[0;34m([0m[0mGRU[0m[0;34m([0m[0mRNN_OUT[0m[0;34m,[0m [0mreturn_sequences[0m[0;34m=[0m[0;32mTrue[0m[0;34m,[0m [0mdropout[0m[0;34m=[0m[0mRNN_DROPOUT[0m[0;34m,[0m [0mrecurrent_dropout[0m[0;34m=[0m[0mRNN_DROPOUT[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     73[0m     [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     74[0m         [0;32mif[0m [0mRNN_LAYER_COUNT[0m [0;34m>[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/keras/engine/sequential.py[0m in [0;36madd[0;34m(self, layer)[0m
+[1;32m    179[0m                 [0mself[0m[0;34m.[0m[0minputs[0m [0;34m=[0m [0mnetwork[0m[0;34m.[0m[0mget_source_inputs[0m[0;34m([0m[0mself[0m[0;34m.[0m[0moutputs[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    180[0m         [0;32melif[0m [0mself[0m[0;34m.[0m[0moutputs[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 181[0;31m             [0moutput_tensor[0m [0;34m=[0m [0mlayer[0m[0;34m([0m[0mself[0m[0;34m.[0m[0moutputs[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    182[0m             [0;32mif[0m [0misinstance[0m[0;34m([0m[0moutput_tensor[0m[0;34m,[0m [0mlist[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    183[0m                 raise TypeError('All layers in a Sequential model '
+
+[0;32m~/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/keras/layers/recurrent.py[0m in [0;36m__call__[0;34m(self, inputs, initial_state, constants, **kwargs)[0m
+[1;32m    530[0m [0;34m[0m[0m
+[1;32m    531[0m         [0;32mif[0m [0minitial_state[0m [0;32mis[0m [0;32mNone[0m [0;32mand[0m [0mconstants[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 532[0;31m             [0;32mreturn[0m [0msuper[0m[0;34m([0m[0mRNN[0m[0;34m,[0m [0mself[0m[0;34m)[0m[0;34m.[0m[0m__call__[0m[0;34m([0m[0minputs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    533[0m [0;34m[0m[0m
+[1;32m    534[0m         [0;31m# If any of `initial_state` or `constants` are specified and are Keras[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/keras/engine/base_layer.py[0m in [0;36m__call__[0;34m(self, inputs, **kwargs)[0m
+[1;32m    412[0m                 [0;31m# Raise exceptions in case the input is not compatible[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    413[0m                 [0;31m# with the input_spec specified in the layer constructor.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 414[0;31m                 [0mself[0m[0;34m.[0m[0massert_input_compatibility[0m[0;34m([0m[0minputs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    415[0m [0;34m[0m[0m
+[1;32m    416[0m                 [0;31m# Collect input shapes to build layer.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/envs/Yelp_NLP/lib/python3.7/site-packages/keras/engine/base_layer.py[0m in [0;36massert_input_compatibility[0;34m(self, inputs)[0m
+[1;32m    309[0m                                      [0mself[0m[0;34m.[0m[0mname[0m [0;34m+[0m [0;34m': expected ndim='[0m [0;34m+[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    310[0m                                      [0mstr[0m[0;34m([0m[0mspec[0m[0;34m.[0m[0mndim[0m[0;34m)[0m [0;34m+[0m [0;34m', found ndim='[0m [0;34m+[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 311[0;31m                                      str(K.ndim(x)))
+[0m[1;32m    312[0m             [0;32mif[0m [0mspec[0m[0;34m.[0m[0mmax_ndim[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    313[0m                 [0mndim[0m [0;34m=[0m [0mK[0m[0;34m.[0m[0mndim[0m[0;34m([0m[0mx[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mValueError[0m: Input 0 is incompatible with layer gru_4: expected ndim=3, found ndim=2
