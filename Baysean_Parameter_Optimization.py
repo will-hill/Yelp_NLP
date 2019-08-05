@@ -215,10 +215,7 @@ def run_experiment(DATA_SIZE,
     X_test = None
     Y_train = None
     Y_test = None
-    try:
-        X, Y, VOCAB_SIZE, X_train, X_test, Y_train, Y_test = data_prep(df, METRIC)
-    except KeyError:
-        pass
+    X, Y, VOCAB_SIZE, X_train, X_test, Y_train, Y_test = data_prep(df, METRIC)
 
     model = model_factory(X_train,
                           VOCAB_SIZE,
