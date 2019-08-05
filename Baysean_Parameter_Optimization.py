@@ -1,7 +1,9 @@
 import time
 
 # REVIEW_FILE_CSV = 'reviews.csv'
-SHUFFLED_REVIEW_FILE_CSV = 'shuffled.100000.reviews.csv'  # 'shuffled.reviews.csv'
+# SHUFFLED_REVIEW_FILE_CSV = 'shuffled.100000.reviews.csv'  # 'shuffled.reviews.csv'
+SHUFFLED_REVIEW_FILE_CSV = 'shuffled.1000000.reviews.csv'  # 'shuffled.reviews.csv'
+# SHUFFLED_REVIEW_FILE_CSV = 'shuffled.reviews.csv'  # 'shuffled.reviews.csv'
 import pandas as pd
 
 # GLOBAL VAR df_all <-- all review data
@@ -13,7 +15,7 @@ del pd, SHUFFLED_REVIEW_FILE_CSV, start, csv_load_time
 
 
 def get_data(size, metric):
-    return df_all[[metric, 'text']].head(size)
+    return df_all[df_all[metric] > 0][[metric, 'text']].head(size)
 
 
 def data_prep(df, metric):
@@ -171,8 +173,10 @@ def run_experiment(DATA_SIZE,
     import json
 
     DATA_SIZE = int(round(DATA_SIZE))
+
     metric_dict = {0: 'stars', 1: 'funny', 2: 'useful', 3: 'cool'}
     METRIC = metric_dict[round(METRIC, 0)]
+
     EMBED_OUTPUT_DIM = int(round(EMBED_OUTPUT_DIM))
     RNN_LAYER_COUNT = int(round(RNN_LAYER_COUNT))
     RNN_OUT = int(round(RNN_OUT))
@@ -255,7 +259,7 @@ def run_experiment(DATA_SIZE,
 
     results_dict['timestamp'] = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
 
-    model.save('./models/' + model_uuid + '.h5')
+    # model.save('./models/' + model_uuid + '.h5')
     with open('./models/' + model_uuid + '.history.json', 'w') as f:
         json.dump(history.history, f)
 
@@ -265,7 +269,9 @@ def run_experiment(DATA_SIZE,
     #   loss
     #   1.00-accuracy
     #   secs_to_run / 600 seconds
-    bayes_metric = np.mean(np.array([1 - loss, 1 - mae, acc * 100, 600 - fit_time]))
+    # ADJUSTING TO PROMOTED ACCURACY
+    bayes_metric = np.mean(np.array([1 - loss, (1 - mae) * 10000, acc, 600 - fit_time]))
+    # bayes_metric = np.mean(np.array([1 - loss, 1 - mae, acc * 100, 600 - fit_time]))
     results_dict['bayes_metric'] = bayes_metric
 
     results_df = pd.DataFrame.from_dict([results_dict], orient='columns')
@@ -279,7 +285,7 @@ def baysean_param_search():
     from bayes_opt import BayesianOptimization
 
     pbounds = {
-        'DATA_SIZE': (10000.0, 10000.1),
+        'DATA_SIZE': (100000, 200000),
         'METRIC': (1, 3),
         'EMBED_OUTPUT_DIM': (8, 512),
         'USE_SPATIAL_DROPOUT': (0, 1),

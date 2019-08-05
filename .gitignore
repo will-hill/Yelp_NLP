@@ -10,3 +10,8 @@ business.json
 reviews.h5
 reviews.csv
 shuffled.reviews.csv
+72fafe19b7d3410188e5a6987dc55726.h5
+shuffled.1000000.reviews.csv
+models/*.h5
+models/72fafe19b7d3410188e5a6987dc55726.h5
+models/72fafe19b7d3410188e5a6987dc55726.h5
