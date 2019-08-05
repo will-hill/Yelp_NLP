@@ -1,8 +1,8 @@
 import time
 
 # REVIEW_FILE_CSV = 'reviews.csv'
-# SHUFFLED_REVIEW_FILE_CSV = 'shuffled.100000.reviews.csv'  # 'shuffled.reviews.csv'
-SHUFFLED_REVIEW_FILE_CSV = 'shuffled.1000000.reviews.csv'  # 'shuffled.reviews.csv'
+SHUFFLED_REVIEW_FILE_CSV = 'shuffled.100000.reviews.csv'  # 'shuffled.reviews.csv'
+# SHUFFLED_REVIEW_FILE_CSV = 'shuffled.1000000.reviews.csv'  # 'shuffled.reviews.csv'
 # SHUFFLED_REVIEW_FILE_CSV = 'shuffled.reviews.csv'  # 'shuffled.reviews.csv'
 import pandas as pd
 
@@ -207,7 +207,18 @@ def run_experiment(DATA_SIZE,
         return test_redundancy
 
     df = get_data(DATA_SIZE, METRIC)
-    X, Y, VOCAB_SIZE, X_train, X_test, Y_train, Y_test = data_prep(df, METRIC)
+
+    X = None
+    Y = None
+    VOCAB_SIZE = None
+    X_train = None
+    X_test = None
+    Y_train = None
+    Y_test = None
+    try:
+        X, Y, VOCAB_SIZE, X_train, X_test, Y_train, Y_test = data_prep(df, METRIC)
+    except KeyError:
+        pass
 
     model = model_factory(X_train,
                           VOCAB_SIZE,
